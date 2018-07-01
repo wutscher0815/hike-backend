@@ -7,11 +7,9 @@ import { Hiker } from './hiker';
 
 const app = express();
 app.use(bodyParser.json());
-const wsApp = express();
-
 
 //initialize a simple http server
-const webSocketServer = http.createServer(wsApp);
+const webSocketServer = http.createServer(app);
 
 //initialize the WebSocket webSocketServer instance
 const wss = new WebSocket.Server({ server: webSocketServer });
@@ -30,11 +28,6 @@ wss.on('connection', (ws: WebSocket) => {
     ws.send(JSON.stringify(hikerlist.getAll()));
 });
 
-//start our webSocketServer
-webSocketServer.listen(process.env.PORT || 8999, () => {
-    const addr: any = webSocketServer.address();
-    console.log(`Server started on ${addr.port} :)`);
-});
 
 app.post('/hiker', (req, res) => {
     console.log('add hiker');
@@ -54,4 +47,4 @@ app.get('/hikers', (req, res) => {
     res.send(JSON.stringify(hikerlist.getAll()));
 });
 
-app.listen(3000, () => console.log('lsitening on 3000'));
+webSocketServer.listen(3000, () => console.log('lsitening on 3000'));
