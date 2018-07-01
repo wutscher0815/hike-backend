@@ -47,4 +47,4 @@ app.get('/hikers', (req, res) => {
     res.send(JSON.stringify(hikerlist.getAll()));
 });
 
-webSocketServer.listen(3000, () => console.log('lsitening on 3000'));
+webSocketServer.listen(process.env.PORT || 3000, () => console.log('listening on ' + (<any>webSocketServer.address()).port));
