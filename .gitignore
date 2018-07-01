@@ -6,8 +6,8 @@ node_modules/
 
 
 #Exclude tsc generated files
-js/*.map
-js/ts.js
+out/*.map
+out/ts.js
 
 out/
 out.map
