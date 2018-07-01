@@ -8,6 +8,10 @@
     "start": "./node_modules/.bin/tsc && node out/index",
     "postinstall": "./node_modules/.bin/tsc"
   },
+  "engines": {
+    "node": "8.11.3",
+    "npm": "5.6.0"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
